@@ -5,7 +5,7 @@ Creating databases has never been easier
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.4.10-f58a1f.svg?style=flat-square)](http://kotlinlang.org)
 [![AndroidX](https://img.shields.io/badge/AndroidX-1.3.2-4971a9.svg?style=flat-square)](https://developer.android.com/jetpack/androidx/)
-[![GitHub (pre-)release](https://img.shields.io/github/v/release/fctaddia/katabase.svg?color=f77200&include_prereleases&label=Release&style=flat-square)](./../../releases)
+[![GitHub (pre-)release](https://img.shields.io/github/v/release/fctaddia/katabase.svg?color=f77200&label=Release&style=flat-square)](./../../releases)
 [![License](https://img.shields.io/github/license/fctaddia/KataBase?color=29a621&label=License)](https://opensource.org/licenses/MIT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c642e1a24d2a44108d53233ede4bee94)](https://www.codacy.com/gh/fctaddia/KataBase/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fctaddia/KataBase&amp;utm_campaign=Badge_Grade)
 
