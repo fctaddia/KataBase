@@ -12,7 +12,7 @@ Creating databases has never been easier
 KataBase aims for simplicity. He wants to give in hand a tool to create and manipulate databases in a simple and clear way.
 
 ### How does it work?
-How KataBase works is **very basic**, and that's what it aims for. The DbHandler class contains all the **functions** that allow you to **add**, **remove** or **show** the contents of the database.
+The DbHandler class contains all the **functions** that allow you to **add**, **remove** or **show** the contents of the database.
 
 > **Tip:** The database table must be created inside the onCreate function
 #### Create Table
