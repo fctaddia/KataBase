@@ -72,4 +72,4 @@ while(i<cursor.count){
 }
 ```
 ### Conclusion
-To conclude, KataBase may be the right choice to start understanding how databases work in android. The implementation is very simple and allows it to be customized to your liking.
+To conclude, KataBase might be the right choice to start understanding how databases work in Android. The implementation is very simple and allows it to be customized to your liking.
