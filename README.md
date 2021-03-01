@@ -11,16 +11,16 @@ Creating databases has never been easier
 
 KataBase aims for simplicity. He wants to give in hand a tool to create and manipulate databases in a simple and clear way.
 
-### How does it work?
+### How does it work
 The DbHandler class contains all the **functions** that allow you to **add**, **remove** or **show** the contents of the database.
 
-#### Create Table:
+#### Create Table
 > **Tip:** The database table must be created inside the onCreate function
 ```Kotlin
 val CREATE_EXAMPLE_TABLE = "CREATE TABLE " + DbColumns.DbItem.TABLE_NAME + "(" + DbColumns.DbItem.ID + " TEXT PRIMARY KEY)"
 db.execSQL(CREATE_EXAMPLE_TABLE)
 ```
-#### Add an item in the database:
+#### Add an item in the database
 ##### This function adds an item in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
@@ -32,7 +32,7 @@ fun addItem(id: String) {
     db.close()
 }
 ```
-#### Remove an item in the database:
+#### Remove an item in the database
 ##### This function is used to remove an item in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
@@ -44,7 +44,7 @@ fun removeItem(id: String) {
     }
 }
 ```
-#### Check if an item is inside the database:
+#### Check if an item is inside the database
 ##### This function returns true when the article is present in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
