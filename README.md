@@ -14,13 +14,14 @@ KataBase aims for simplicity. He wants to give in hand a tool to create and mani
 ### How does it work?
 The DbHandler class contains all the **functions** that allow you to **add**, **remove** or **show** the contents of the database.
 
-#### Create Table
+#### Create Table:
 > **Tip:** The database table must be created inside the onCreate function
 ```Kotlin
 val CREATE_EXAMPLE_TABLE = "CREATE TABLE " + DbColumns.DbItem.TABLE_NAME + "(" + DbColumns.DbItem.ID + " TEXT PRIMARY KEY)"
 db.execSQL(CREATE_EXAMPLE_TABLE)
 ```
 #### Add an item in the database:
+##### This function adds an item in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
 fun addItem(id: String) {
@@ -32,6 +33,7 @@ fun addItem(id: String) {
 }
 ```
 #### Remove an item in the database:
+##### This function is used to remove an item in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
 fun removeItem(id: String) {
@@ -42,8 +44,8 @@ fun removeItem(id: String) {
     }
 }
 ```
-#### Check if an item is inside the database
-> **Tip:** This function returns true when the article is present in the database <br>
+#### Check if an item is inside the database:
+##### This function returns true when the article is present in the database
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
 fun isItem(id: String): Boolean {
@@ -53,14 +55,6 @@ fun isItem(id: String): Boolean {
     cursor.close()
     db.close()
     return result
-}
-```
-#### Show all database
-> **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
-```Kotlin
-fun getAllItems() : Cursor? {
-    val db = this.readableDatabase
-    return db.rawQuery("SELECT * FROM ${DbColumns.DbItem.TABLE_NAME}", null)
 }
 ```
 #### Update a database item
@@ -79,6 +73,24 @@ fun updateItem(id: String, column: String, item: String) {
     }
 }
 ```
-
+#### Show all database
+##### This function returns a cursor containing all the elements of the database
+```Kotlin
+fun getAllItems(): Cursor? {
+    val db = this.readableDatabase
+    return db.rawQuery("SELECT * FROM ${DbColumns.DbItem.TABLE_NAME}", null)
+}
+```
+> **Tip:** To use the getAllItems function, use the code commented below
+```Kotlin
+var cursor = getAllItems()
+var i = 0
+var arrayItems: Array<String> = array("")
+while (i < cursor.count) {
+    arrayItems[i] = cursor.toString(cursor.getColumnIndex(DbColumns.DbRoom.ID))
+    cursor.moveToNext()
+    i++
+}
+```
 ### Conclusion
 To conclude, KataBase might be the right choice to start understanding how databases work in Android. The implementation is very simple and allows it to be customized to your liking.
