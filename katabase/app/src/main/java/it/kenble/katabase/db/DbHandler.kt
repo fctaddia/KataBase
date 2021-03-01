@@ -62,7 +62,7 @@ class DbHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLi
      * @param id In the id parameter enter the identification key of the article contained in DbKeys
      * @return Returns true if the item is present in the database while false if it is not present
      */
-    private fun isItem(id: String): Boolean {
+    fun isItem(id: String): Boolean {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM ${DbColumns.DbItem.TABLE_NAME}  WHERE ${DbColumns.DbItem.ID} = ? ", arrayOf(id) )
         val result = cursor.move(1)
