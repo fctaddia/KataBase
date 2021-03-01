@@ -8,6 +8,10 @@ import it.kenble.katabase.db.DbHandler
 import it.kenble.katabase.db.DbColumns
 import it.kenble.katabase.databinding.ActivityMainBinding
 
+/**
+ * @author Francesco Taddia
+ * @see 'https://github.com/fctaddia'
+ */
 class MainActivity : AppCompatActivity() {
 
     // region Variables
