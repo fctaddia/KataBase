@@ -3,7 +3,7 @@
 ## KataBase
 Creating databases has never been easier
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.4.10-f58a1f.svg?style=flat-square)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.4.31-f58a1f.svg?style=flat-square)](http://kotlinlang.org)
 [![AndroidX](https://img.shields.io/badge/AndroidX-1.3.2-4971a9.svg?style=flat-square)](https://developer.android.com/jetpack/androidx/)
 [![GitHub (pre-)release](https://img.shields.io/github/v/release/fctaddia/katabase.svg?color=f77200&label=Release&style=flat-square)](./../../releases)
 [![License](https://img.shields.io/github/license/fctaddia/KataBase?color=29a621&label=License)](https://opensource.org/licenses/MIT)
@@ -43,7 +43,7 @@ fun removeItem(id: String) {
 }
 ```
 #### Check if an item is inside the database
-> **Tip:** This function returns true when the article is present in the database
+> **Tip:** This function returns true when the article is present in the database <br>
 > **Tip:** In the id parameter enter the identification key of the article contained in DbKeys
 ```Kotlin
 fun isItem(id: String): Boolean {
@@ -61,6 +61,22 @@ fun isItem(id: String): Boolean {
 fun getAllItems() : Cursor? {
     val db = this.readableDatabase
     return db.rawQuery("SELECT * FROM ${DbColumns.DbItem.TABLE_NAME}", null)
+}
+```
+#### Update a database item
+##### This function is used to update individual elements in the database
+> **Tip:** In the id parameter enter the identification key of the article contained in DbKeys <br>
+> **Tip:** In the column parameter insert the reference column of the element you want to update <br>
+> **Tip:** In the item parameter enter the new volume that you want to update
+```Kotlin
+fun updateItem(id: String, column: String, item: String) {
+    if (isItem(id)) {
+        val value = ContentValues()
+        value.put(column, item)
+        val db = this.writableDatabase
+        db.update(DbColumns.DbItem.TABLE_NAME, value, DbColumns.DbItem.ID + "=?", arrayOf(id))
+        db.close()
+    }
 }
 ```
 
