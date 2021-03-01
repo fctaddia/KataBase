@@ -2,19 +2,21 @@ package it.kenble.katabase.ui
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.appcompat.app.AppCompatActivity
 
-import it.kenble.katabase.R
-import it.kenble.katabase.db.DbColumns
 import it.kenble.katabase.db.DbHandler
+import it.kenble.katabase.db.DbColumns
 import it.kenble.katabase.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // region Variables
+
     private lateinit var dbHandler: DbHandler
-    private lateinit var mainBind: ActivityMainBinding
     private lateinit var arrayItem: Array<String>
+    private lateinit var mainBind: ActivityMainBinding
+
+    // endregion
 
     // region Lifecycle
     
@@ -24,10 +26,12 @@ class MainActivity : AppCompatActivity() {
     }
     
     // endregion
-    
+
+    // region Init, Listeners, Toast
+
     private fun init() {
         mainBind = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(mainBind.root)
         dbHandler = DbHandler(this, null)
         arrayItem = arrayOf("")
         showDb()
@@ -62,6 +66,10 @@ class MainActivity : AppCompatActivity() {
         toastItem.show()
     }
 
+    // endregion
+
+    // region Query
+
     private fun refreshDb() {
         val cursor = dbHandler.getAllItems() ; var i = 0
         while(cursor!!.moveToNext()){
@@ -79,4 +87,7 @@ class MainActivity : AppCompatActivity() {
             mainBind.tvDisplayName.append("\n")
         } ; cursor.close()
     }
+
+    // endregion
+
 }
