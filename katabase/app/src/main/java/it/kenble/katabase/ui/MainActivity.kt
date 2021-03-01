@@ -1,30 +1,36 @@
 package it.kenble.katabase.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import it.kenble.katabase.R
-import it.kenble.katabase.databinding.ActivityMainBinding
 import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
+
+import it.kenble.katabase.R
 import it.kenble.katabase.db.DbColumns
 import it.kenble.katabase.db.DbHandler
+import it.kenble.katabase.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val dbHandler = DbHandler(this, null)
-    private lateinit var mainBind : ActivityMainBinding
-    private var arrayItem : Array<String> = arrayOf("")
+    private lateinit var dbHandler: DbHandler
+    private lateinit var mainBind: ActivityMainBinding
+    private lateinit var arrayItem: Array<String>
 
-    private fun toast(message: String) {
-        val toastItem: Toast = Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG)
-        toastItem.show()
-    }
-
+    // region Lifecycle
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainBind = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        init() ; listeners()
+    }
+    
+    // endregion
+    
+    private fun init() {
+        mainBind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        dbHandler = DbHandler(this, null)
+        arrayItem = arrayOf("")
         showDb()
-        listeners()
     }
 
     private fun listeners() {
@@ -49,6 +55,11 @@ class MainActivity : AppCompatActivity() {
                 toast("Insert something in the edit text first")
             }
         }
+    }
+    
+    private fun toast(message: String) {
+        val toastItem: Toast = Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG)
+        toastItem.show()
     }
 
     private fun refreshDb() {
