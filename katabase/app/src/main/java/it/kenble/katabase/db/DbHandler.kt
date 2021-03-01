@@ -9,8 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper
 class DbHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_EXAMPLE_TABLE = "CREATE TABLE " + DbColumns.DbItem.TABLE_NAME + "(" + DbColumns.DbItem.ID + " TEXT PRIMARY KEY)"
-        db.execSQL(CREATE_EXAMPLE_TABLE)
+        val table = "CREATE TABLE " + DbColumns.DbItem.TABLE_NAME + "(" + DbColumns.DbItem.ID + " TEXT PRIMARY KEY)"
+        db.execSQL(table)
     }
     
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -68,7 +68,7 @@ class DbHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLi
     * In the column parameter insert the reference column of the element you want to update
     * In the item parameter enter the new volume that you want to update
     */
-    fun updateItem(id: String, id: String, column: String, item: String) {
+    fun updateItem(id: String, column: String, item: String) {
         if (isItem(id)) {
             val value = ContentValues()
             value.put(column, item)
@@ -92,8 +92,8 @@ class DbHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLi
     }
 
     companion object {
-        val DATABASE_VERSION = 1
-        val DATABASE_NAME = "Example.db"
+        const val DATABASE_VERSION = 1
+        const val DATABASE_NAME = "Example.db"
     }
 
 }
